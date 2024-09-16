@@ -1,0 +1,52 @@
+[
+    {
+        "email": "budi.setiawan@example.com",
+        "name": "Budi Setiawan",
+        "password": "password123"
+    },
+    {
+        "email": "siti.ayu@example.com",
+        "name": "Siti Ayu",
+        "password": "password456"
+    },
+    {
+        "email": "adi.pratama@example.com",
+        "name": "Adi Pratama",
+        "password": "password789"
+    },
+    {
+        "email": "rina.sulistiani@example.com",
+        "name": "Rina Sulistiani",
+        "password": "password321"
+    },
+    {
+        "email": "joko.widodo@example.com",
+        "name": "Joko Widodo",
+        "password": "password654"
+    },
+    {
+        "email": "maya.rahmawati@example.com",
+        "name": "Maya Rahmawati",
+        "password": "password987"
+    },
+    {
+        "email": "dani.haryanto@example.com",
+        "name": "Dani Haryanto",
+        "password": "password135"
+    },
+    {
+        "email": "lisa.kusuma@example.com",
+        "name": "Lisa Kusuma",
+        "password": "password246"
+    },
+    {
+        "email": "rio.aditya@example.com",
+        "name": "Rio Aditya",
+        "password": "password357"
+    },
+    {
+        "email": "nina.wulandari@example.com",
+        "name": "Nina Wulandari",
+        "password": "password468"
+    }
+]

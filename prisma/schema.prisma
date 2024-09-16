@@ -1,0 +1,81 @@
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["omitApi"]
+}
+
+model Users {
+    id             Int     @id @default(autoincrement())
+    email          String  @unique
+    name           String
+    password       String
+    profilePicture String?
+
+    NoteBooks Notebooks[]
+    Tags      Tags[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Notebooks {
+    id          Int     @id @default(autoincrement())
+    userId      Int
+    name        String?
+    description String?
+    heroImage   String?
+    emoji       String?
+
+    User  Users   @relation(fields: [userId], references: [id])
+    Notes Notes[]
+
+    Emoji     Emoji?   @relation(fields: [emoji], references: [id])
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Emoji {
+    id        String      @unique
+    Notebooks Notebooks[]
+}
+
+model Notes {
+    id         Int     @id @default(autoincrement())
+    notebookId Int
+    name       String?
+    tags       Tags[]
+    isPinned   Boolean @default(false)
+    isArchived Boolean @default(false)
+
+    Contents Contents?
+    Notebook Notebooks @relation(fields: [notebookId], references: [id])
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Contents {
+    id      Int    @id @default(autoincrement())
+    noteId  Int    @unique
+    content String  @db.Text
+
+    Note Notes @relation(fields: [noteId], references: [id])
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Tags {
+    id     Int    @id @default(autoincrement())
+    userId Int    @map("usersId")
+    name   String
+
+    Notes Notes[]
+    User  Users   @relation(fields: [userId], references: [id])
+
+    @@unique([userId, name])
+}
